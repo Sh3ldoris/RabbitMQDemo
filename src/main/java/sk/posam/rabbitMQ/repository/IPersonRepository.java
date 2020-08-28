@@ -6,5 +6,4 @@ public interface IPersonRepository {
 
     Person findPerson(String birthNumber);
 
-
 }

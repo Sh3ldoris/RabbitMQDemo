@@ -7,11 +7,20 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement()
 public class Person {
 
+    private String birthnumber;
     private String firstname;
     private String lastname;
     private int age;
     private String address;
     private String city;
+
+    public String getBirthnumber() {
+        return birthnumber;
+    }
+
+    public void setBirthnumber(String birthnumber) {
+        this.birthnumber = birthnumber;
+    }
 
     public String getFirstname() {
         return firstname;
