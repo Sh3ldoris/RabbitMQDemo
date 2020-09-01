@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import sk.posam.rabbitMQ.AppkaApplication;
-import sk.posam.rabbitMQ.repository.RecordSaverRepo;
+import sk.posam.rabbitMQ.repository.rabbitMQ.RecordSaverRepo;
 
 @Component
 public class QueueDBService implements IRabbitService {
@@ -19,6 +19,6 @@ public class QueueDBService implements IRabbitService {
     @RabbitListener( queues = AppkaApplication.QUEUE_DB)
     public void saveRecord(Message message) {
         System.out.println("DB message is " + new String(message.getBody()));
-        //TODO:Save record to databese
+        //TODO:Create string from message and save it(base 64)
     }
 }
