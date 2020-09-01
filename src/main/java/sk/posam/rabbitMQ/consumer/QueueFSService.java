@@ -7,14 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import sk.posam.rabbitMQ.AppkaApplication;
-import sk.posam.rabbitMQ.repository.rabbitMQ.RecordSaverRepo;
+import sk.posam.rabbitMQ.repository.rabbitMQ.IRecordSaverRepo;
 
 @Component
 public class QueueFSService implements IRabbitService {
 
     @Autowired
     @Qualifier("fsSaverRepo")
-    private RecordSaverRepo recordSaverRepo;
+    private IRecordSaverRepo IRecordSaverRepo;
 
     /**
      * Create encoded base64 string from message and
@@ -27,6 +27,6 @@ public class QueueFSService implements IRabbitService {
         //Create string from message and decode it BASE64
         String record = new String(message.getBody());
         byte[] decodedRecord = Base64.decodeBase64(record);
-        recordSaverRepo.save(new String(decodedRecord));
+        IRecordSaverRepo.save(new String(decodedRecord));
     }
 }

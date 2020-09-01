@@ -3,13 +3,12 @@ package sk.posam.rabbitMQ.repository.rabbitMQ;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Repository;
-import sk.posam.rabbitMQ.Service.ClientServiceImp;
 
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
 @Repository( value = "fsSaverRepo")
-public class FSSaverRecordRepo implements RecordSaverRepo {
+public class FSSaverRecordRepo implements IRecordSaverRepo {
 
     private static final Logger LOGGER = LogManager.getLogger(FSSaverRecordRepo.class);
 

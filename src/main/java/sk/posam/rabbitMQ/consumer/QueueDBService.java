@@ -6,14 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import sk.posam.rabbitMQ.AppkaApplication;
-import sk.posam.rabbitMQ.repository.rabbitMQ.RecordSaverRepo;
+import sk.posam.rabbitMQ.repository.rabbitMQ.IRecordSaverRepo;
 
 @Component
 public class QueueDBService implements IRabbitService {
 
     @Autowired
     @Qualifier("dbSaverRepo")
-    private RecordSaverRepo recordSaverRepo;
+    private IRecordSaverRepo IRecordSaverRepo;
 
     @Override
     @RabbitListener( queues = AppkaApplication.QUEUE_DB)
