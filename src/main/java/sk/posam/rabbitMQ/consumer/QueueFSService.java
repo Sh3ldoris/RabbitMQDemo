@@ -24,7 +24,6 @@ public class QueueFSService implements IRabbitService {
     @Override
     @RabbitListener( queues = AppkaApplication.QUEUE_FS)
     public void saveRecord(Message message) {
-        //Create string from message and decode it BASE64
         String record = new String(message.getBody());
         byte[] decodedRecord = Base64.decodeBase64(record);
         IRecordSaverRepo.save(new String(decodedRecord));

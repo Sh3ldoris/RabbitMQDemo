@@ -1,5 +1,6 @@
 package sk.posam.rabbitMQ.consumer;
 
+import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +16,14 @@ public class QueueDBService implements IRabbitService {
     @Qualifier("dbSaverRepo")
     private IRecordSaverRepo IRecordSaverRepo;
 
+    /**
+     * Create encoded base64 string from message
+     * @param message
+     */
     @Override
     @RabbitListener( queues = AppkaApplication.QUEUE_DB)
     public void saveRecord(Message message) {
-        System.out.println("DB message is " + new String(message.getBody()));
-        //TODO:Create string from message and save it(base 64)
+        String record = new String(message.getBody());
+        IRecordSaverRepo.save(record);
     }
 }
