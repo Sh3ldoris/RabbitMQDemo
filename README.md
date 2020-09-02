@@ -1,6 +1,6 @@
 PostGreSQL database running on port 5572.
 To initialize databaze run code:
-To setup Person table crete table: 
+To setup Person table execute sql: 
 CREATE TABLE person(
    birthnumber VARCHAR(11) NOT NULL,
    firstname VARCHAR (20) NOT NULL,
@@ -12,7 +12,12 @@ CREATE TABLE person(
 
 And initialize it with values:
 
-
+To setup HTML table execute sql:
+CREATE TABLE html (
+	birthnumber VARCHAR(11) NOT NULL,
+	encodedHtml VARCHAR(3000) NOT NULL,
+	PRIMARY KEY(birthnumber)
+);
 
 # JBOSS FUSE 6.3 instalation
 
