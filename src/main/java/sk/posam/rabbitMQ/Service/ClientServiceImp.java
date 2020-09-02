@@ -63,6 +63,8 @@ public class ClientServiceImp implements IClientService {
                         message.getMessageProperties().getHeaders().put("identifier", foundedPerson.getBirthnumber());
                         return message;
                     });
+        } else {
+            LOGGER.info("Cannot find given person!");
         }
     }
 

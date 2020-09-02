@@ -1,6 +1,5 @@
 package sk.posam.rabbitMQ.consumer;
 
-import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;

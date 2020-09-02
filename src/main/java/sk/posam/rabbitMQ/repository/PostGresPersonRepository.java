@@ -23,14 +23,13 @@ public class PostGresPersonRepository implements IPersonRepository{
     private static final Logger LOGGER = LogManager.getLogger(PostGresPersonRepository.class);
 
     private RowMapper<Person> personMapper = new PersonMapper();
-    //private NamedParameterJdbcTemplate template;
-    private JdbcTemplate jdbcTemplate;
+    //private JdbcTemplate jdbcTemplate;
     private Connection connection = null;
     private Statement statement = null;
 
     public PostGresPersonRepository(DataSource dataSource) {
         super();
-        this.jdbcTemplate = new JdbcTemplate(dataSource);
+        //this.jdbcTemplate = new JdbcTemplate(dataSource);
         try {
             connection = dataSource.getConnection();
             statement = connection.createStatement();
@@ -43,6 +42,8 @@ public class PostGresPersonRepository implements IPersonRepository{
     public Person findPerson(String birthNumber) {
         Person person = new Person();
         LOGGER.info("Start looking in database");
+        //String sql = "SELECT * FROM person WHERE birthnumber=?";
+        //List<Person> list = jdbcTemplate.query(sql, personMapper, birthNumber);
         try {
             String sql = String.format("SELECT * FROM person WHERE birthnumber='%s'", birthNumber);
             ResultSet resultSet = statement.executeQuery(sql);
@@ -56,6 +57,7 @@ public class PostGresPersonRepository implements IPersonRepository{
                 person.setCity(resultSet.getString("city"));
             }
         } catch (Exception e) {
+            person = null;
             LOGGER.error("There is an exception", e);
         }
         return person;
@@ -68,7 +70,6 @@ public class PostGresPersonRepository implements IPersonRepository{
         person.setLastname(rs.getString("lastname"));
         person.setAddress(rs.getString("address"));
         person.setCity(rs.getString("city"));
-        person.setAge(rs.getInt("age"));
 
         return person;
 

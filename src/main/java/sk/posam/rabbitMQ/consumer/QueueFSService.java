@@ -29,10 +29,9 @@ public class QueueFSService implements IRabbitService {
         //Decode it to readable HTML
         byte[] decodedRecord = Base64.decodeBase64(record);
         //Parse birthnumber
-        //TODO:parse birthnumber
-        //String identifier = message.getMessageProperties().getHeader("identifier");
+        String identifier = parseBnumber(message.getMessageProperties().getHeader("identifier"));
         //Save it
-        IRecordSaverRepo.save(new String(decodedRecord), "991022/9048");
+        IRecordSaverRepo.save(new String(decodedRecord), identifier);
     }
 
     private String parseBnumber(String birthnumber) {
