@@ -54,9 +54,16 @@ public class ClientServiceImp implements IClientService {
                 byte[] base64Html = Base64.encodeBase64(htmlRecord.getBytes()); // Base64.encodeBase64(compressHtml(htmlRecord).getBytes());
                 encodedRecord = new String(base64Html);
             }
-        }
 
-        rabbitmqTemplate.convertAndSend(AppkaApplication.EXCHANGE, ROUTING_KEY, encodedRecord);
+            rabbitmqTemplate.convertAndSend(
+                    AppkaApplication.EXCHANGE,
+                    ROUTING_KEY,
+                    encodedRecord,
+                    message -> {
+                        message.getMessageProperties().getHeaders().put("identifier", foundedPerson.getBirthnumber());
+                        return message;
+                    });
+        }
     }
 
     private String toXML(Object data) {

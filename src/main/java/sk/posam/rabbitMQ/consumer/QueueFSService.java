@@ -24,8 +24,18 @@ public class QueueFSService implements IRabbitService {
     @Override
     @RabbitListener( queues = AppkaApplication.QUEUE_FS)
     public void saveRecord(Message message) {
+        //Get encoded string from message
         String record = new String(message.getBody());
+        //Decode it to readable HTML
         byte[] decodedRecord = Base64.decodeBase64(record);
-        IRecordSaverRepo.save(new String(decodedRecord));
+        //Parse birthnumber
+        //TODO:parse birthnumber
+        //String identifier = message.getMessageProperties().getHeader("identifier");
+        //Save it
+        IRecordSaverRepo.save(new String(decodedRecord), "991022/9048");
+    }
+
+    private String parseBnumber(String birthnumber) {
+        return birthnumber.replace("/","");
     }
 }

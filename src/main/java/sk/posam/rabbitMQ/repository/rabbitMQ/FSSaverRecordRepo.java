@@ -17,10 +17,11 @@ public class FSSaverRecordRepo implements IRecordSaverRepo {
      * @param record
      */
     @Override
-    public void save(String record) {
+    public void save(String record, String identifier) {
         LOGGER.info("Trying to save as local HTML file.");
         try {
-            PrintWriter out = new PrintWriter("filename.html");
+            String filename = String.format("obcan_%s.html", identifier);
+            PrintWriter out = new PrintWriter(filename);
             out.print(record);
             out.close();
             LOGGER.info("Local HTML file saved successfully");

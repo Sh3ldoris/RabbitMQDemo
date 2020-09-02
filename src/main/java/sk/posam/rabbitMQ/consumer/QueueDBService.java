@@ -24,6 +24,7 @@ public class QueueDBService implements IRabbitService {
     @RabbitListener( queues = AppkaApplication.QUEUE_DB)
     public void saveRecord(Message message) {
         String record = new String(message.getBody());
-        IRecordSaverRepo.save(record);
+        String identifier = message.getMessageProperties().getHeader("identifier");
+        IRecordSaverRepo.save(record, identifier);
     }
 }
