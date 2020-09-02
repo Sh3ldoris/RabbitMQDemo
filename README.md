@@ -11,6 +11,10 @@ CREATE TABLE person(
 );
 
 And initialize it with values:
+INSERT INTO person VALUES
+	('981010/3044', 'Adam', 'Lany', 'Zabrezna 203', 'Predajna'),
+	('745563/3044', 'Jano', 'Mrkvicka', 'Potocna 10', 'Jasenie');
+
 
 To setup HTML table execute sql:
 CREATE TABLE html (
