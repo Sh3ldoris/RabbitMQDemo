@@ -85,13 +85,21 @@ org.ops4j.pax.url.mvn.repositories = https://deployer:FGTDdKnAWa50@build.dcom.sk
 ```
 
 - connect to jboss container
+```bash
 docker-compose exec jboss bash
+```
 
 -connect to logs
+```bash
 tail -f instances/dcom/data/log/fuse.log
+```
 
 -set up database
+```bash
 docker run -p 5572:5432 -e POSTGRES_PASSWORD=admin -d postgres
+```
 
 -set up RabbitMQ image
+```bash
 docker run -p 5670:5672 -p 15672:15672 -e RABBITMQ_DEFAULT_USER=admin -e RABBITMQ_DEFAULT_PASS=admin rabbitmq:3-management
+```
