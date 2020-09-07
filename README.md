@@ -11,7 +11,6 @@ CREATE TABLE person(
    PRIMARY KEY(birthnumber)
 );
 
-To setup HTML table execute sql:
 CREATE TABLE html (
 	birthnumber VARCHAR(11) NOT NULL,
 	encodedHtml VARCHAR(3000) NOT NULL,
