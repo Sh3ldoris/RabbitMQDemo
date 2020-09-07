@@ -18,7 +18,7 @@ CREATE TABLE html (
 );
 
 INSERT INTO person VALUES 
-	('Adam', 'Lany', '981010/5099', 'Zabrezna 203', 'Predajna');
+	('981010/5099','Adam', 'Lany', 'Zabrezna 203', 'Predajna');
 ```
 
 
